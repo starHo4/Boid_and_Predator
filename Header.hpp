@@ -1,10 +1,8 @@
 #ifndef __Header__
 #define __Header__
 
-#include <iostream>
-#include <cmath>
-using namespace std;
+#include "HeaderBase.hpp"
 
-#include "PVector.hpp"
+#include "Simulation.hpp"
 
 #endif

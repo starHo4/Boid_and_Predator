@@ -1,7 +1,7 @@
 #ifndef __PVector__
 #define __PVector__
 
-#include "Header.hpp"
+#include <cmath>
 
 struct PVector
 {

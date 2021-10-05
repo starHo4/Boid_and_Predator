@@ -1,11 +1,16 @@
 #include "Header.hpp"
 
-int main(){
+int main()
+{
+    // Main
+    Simulation simulation;
+    simulation.Run();
 
     // For test
     PVector A(1, 1);
     PVector B(0, 2);
-    if(A == B){
+    if (A == B)
+    {
         cout << "hoshi" << endl;
     }
     PVector C = A + B;
