@@ -15,32 +15,35 @@ struct PVector
         y = _y;
     }
 
+    // Substitute PVector
+    PVector operator=(const PVector v)
+    {
+        x = v.x;
+        y = v.y;
+        return *this;
+    }
     // whether or not this vector is another vector.
-    bool operator==(const PVector &v) const
+    bool operator==(const PVector &v)
     {
         return (x == v.x && y == v.y);
     }
-    bool operator!=(const PVector &v) const
+    bool operator!=(const PVector &v)
     {
         return (x != v.x || y != v.y);
     }
-    PVector operator+(const PVector &v) const
+    // Overload of operator "+="
+    PVector operator+=(const PVector &v)
     {
-        double _x = x + v.x;
-        double _y = y + v.y;
-        return PVector(_x, _y);
+        x += v.x;
+        y += v.y;
+        return *this;
     }
-    PVector operator-(const PVector &v) const
+    // Overload of operator "-="
+    PVector operator-=(const PVector &v)
     {
-        double _x = x - v.x;
-        double _y = y - v.y;
-        return PVector(_x, _y);
-    }
-    PVector operator*(const double &a) const
-    {
-        double _x = a * x;
-        double _y = a * y;
-        return PVector(_x, _y);
+        x -= v.x;
+        y -= v.y;
+        return *this;
     }
 
     // Methods
@@ -50,5 +53,9 @@ struct PVector
     double Dist(PVector v);
     PVector NullVector();
 };
+
+PVector operator+(const PVector &v1, const PVector &v2);
+PVector operator-(const PVector &v1, const PVector &v2);
+PVector operator*(const double &a, const PVector &v);
 
 #endif
