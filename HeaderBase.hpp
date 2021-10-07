@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <random>
 using namespace std;
 // SFML
 #include <SFML/Window.hpp>

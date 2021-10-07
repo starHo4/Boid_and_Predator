@@ -9,7 +9,10 @@ private:
     // SFML
     sf::RenderWindow window;
 
-    // Parameter param;
+    // Parameter
+    Parameter param;
+    // Global random generator
+    mt19937_64 mt;
 
     // Flock flock;
 

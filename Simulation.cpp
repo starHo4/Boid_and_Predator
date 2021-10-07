@@ -2,15 +2,18 @@
 
 Simulation::Simulation()
 {
+    // Initialization
+    mt.seed(param.RANDOM_SEED);
+    // SFML
     sf::ContextSettings settings;
     settings.antialiasingLevel = 16;
-    window.create(sf::VideoMode(800, 800), "", sf::Style::None, settings);
-    window.setFramerateLimit(60);
+    window.create(sf::VideoMode(param.FIELD_W, param.FIELD_H), "", sf::Style::None, settings);
+    window.setFramerateLimit(param.FPS);
 }
 
 void Simulation::Run()
 {
-    for (int t = 0; t < 8000; t++)
+    for (int t = 0; t < param.maxTimesteps; t++)
     {
         HandleInput();
         Render();
@@ -37,6 +40,6 @@ void Simulation::HandleInput()
 
 void Simulation::Render()
 {
-    window.clear();
+    window.clear(sf::Color(255, 240, 237));
     window.display();
 }

@@ -3,26 +3,22 @@
 int main()
 {
     // Main
-    Simulation simulation;
-    simulation.Run();
+    // Simulation simulation;
+    // simulation.Run();
 
     // For test
-    PVector A(1, 1);
-    PVector B(0, 2);
-    if (A == B)
+    mt19937_64 mt;
+    Parameter P;
+    mt.seed(P.RANDOM_SEED);
+    uniform_int_distribution<int> uid_10(0, 10);
+    for (int i = 0; i < 100; i++)
     {
-        cout << "hoshi" << endl;
+        cout << uid_10(mt) << " ";
+        if ((i + 1) % 10 == 0)
+        {
+            cout << endl;
+        }
     }
-    PVector C = A + B;
-    cout << "A + B = " << C.x << ", " << C.y << endl;
-    double dot = A.Dot(B);
-    cout << "A @(dot) B = " << dot << endl;
-    double norm = A.Norm();
-    cout << "Norm of A = " << norm << endl;
-    A.Normalize();
-    cout << "Normalize A = " << A.x << ", " << A.y << endl;
-    double dist = A.Dist(B);
-    cout << "Distance A and B = " << dist << endl;
 
     return 0;
 }
