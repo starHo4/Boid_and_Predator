@@ -17,6 +17,9 @@ struct Parameter
     const unsigned int FPS = 60;
     const double FIELD_W = 1200;
     const double FIELD_H = 1200;
+
+    // Agent
+    const double s = 1.0; // Speed
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef __Agent__
 #define __Agent__
 
-#include "Header.hpp"
+#include "HeaderBase.hpp"
 
 class Agent
 {
@@ -16,6 +16,7 @@ public:
     double getSpeed() { return speed; };
 
     // Public methods
+    void init(mt19937_64 &mt, Parameter &P);
     void Move();
 
 private:

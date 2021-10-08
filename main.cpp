@@ -3,8 +3,8 @@
 int main()
 {
     // Main
-    // Simulation simulation;
-    // simulation.Run();
+    Simulation simulation;
+    simulation.Run();
 
     // For test
     PVector A(1, 2);

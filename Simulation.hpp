@@ -3,6 +3,8 @@
 
 #include "Header.hpp"
 
+class Flock;
+
 class Simulation
 {
 private:
@@ -10,14 +12,18 @@ private:
     sf::RenderWindow window;
 
     // Parameter
-    Parameter param;
+    Parameter *param;
     // Global random generator
     mt19937_64 mt;
 
-    // Flock flock;
+    Flock *flock;
 
+    // SFML
     void Render();
     void HandleInput();
+    void DrawFlock();
+    // Main process
+    void MainProcess();
 
 public:
     Simulation();
