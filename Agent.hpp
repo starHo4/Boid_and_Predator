@@ -17,9 +17,10 @@ public:
 
     // Public methods
     void init(mt19937_64 &mt, Parameter &P);
-    void Move();
+    virtual void Move();
 
 private:
+protected:
     PVector pos;
     PVector vel;
     double angle;

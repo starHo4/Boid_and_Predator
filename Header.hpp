@@ -4,6 +4,7 @@
 #include "HeaderBase.hpp"
 
 #include "Agent.hpp"
+#include "Prey.hpp"
 #include "Flock.hpp"
 #include "Simulation.hpp"
 

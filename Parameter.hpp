@@ -12,6 +12,8 @@ struct Parameter
     // Parameter
     const unsigned int maxTimesteps = 1000;
     const unsigned int N = 100;
+    const unsigned int N_prey = 80;
+    const unsigned int N_pred = N - N_prey;
 
     // For SFML
     const unsigned int FPS = 60;

@@ -4,15 +4,23 @@ Simulation::Simulation()
 {
     // Initialization
     param = new Parameter();
-    flock = new Flock();
+    flock_prey = new Flock();
+    flock_predator = new Flock();
     // Set a random seed of mt.
     mt.seed(param->RANDOM_SEED);
-    // Init a flock
-    for (int i = 0; i < param->N; i++)
+    // Init a prey flock
+    for (int i = 0; i < param->N_prey; i++)
+    {
+        Prey a;
+        a.init(mt, *param);
+        flock_prey->addAgent(a);
+    }
+    // Init a predator flock
+    for (int i = 0; i < param->N_pred; i++)
     {
         Agent a;
         a.init(mt, *param);
-        flock->addAgent(a);
+        flock_predator->addAgent(a);
     }
 
     // SFML
@@ -38,9 +46,11 @@ void Simulation::Run()
 
 void Simulation::MainProcess()
 {
-    flock->flocking(mt);
+    flock_prey->flocking();
+    flock_predator->flocking();
 }
 
+//* Handle Input *//
 void Simulation::HandleInput()
 {
     sf::Event event;
@@ -55,18 +65,20 @@ void Simulation::HandleInput()
     }
 }
 
+//* Render Functions *//
 void Simulation::Render()
 {
     window.clear(sf::Color(255, 240, 237));
 
-    DrawFlock();
+    DrawPreyFlock();
+    DrawPredatorFlock();
 
     window.display();
 }
 
-void Simulation::DrawFlock()
+void Simulation::DrawPreyFlock()
 {
-    for (int i = 0; i < param->N; i++)
+    for (int i = 0; i < param->N_prey; i++)
     {
         sf::ConvexShape shape;
         double r = 5;
@@ -75,8 +87,29 @@ void Simulation::DrawFlock()
         shape.setPoint(0, sf::Vector2f(0, -r));
         shape.setPoint(1, sf::Vector2f(-r * cos(54 * PI / 180), r * sin(54 * PI / 180)));
         shape.setPoint(2, sf::Vector2f(r * cos(54 * PI / 180), r * sin(54 * PI / 180)));
-        shape.rotate(flock->getAgent(i).getAngle() * 180 / PI + 90);
-        shape.setPosition(flock->getAgent(i).getPos().x, flock->getAgent(i).getPos().y);
+        shape.rotate(flock_prey->getAgent(i).getAngle() * 180 / PI + 90);
+        shape.setPosition(flock_prey->getAgent(i).getPos().x, flock_prey->getAgent(i).getPos().y);
+        shape.setOutlineColor(sf::Color::Black);
+        shape.setOutlineThickness(0.5);
+        shape.setFillColor(sf::Color::Blue);
+
+        window.draw(shape);
+    }
+}
+
+void Simulation::DrawPredatorFlock()
+{
+    for (int i = 0; i < param->N_pred; i++)
+    {
+        sf::ConvexShape shape;
+        double r = 8;
+        shape.setPointCount(3);
+        shape.setOrigin(0, 0);
+        shape.setPoint(0, sf::Vector2f(0, -r));
+        shape.setPoint(1, sf::Vector2f(-r * cos(54 * PI / 180), r * sin(54 * PI / 180)));
+        shape.setPoint(2, sf::Vector2f(r * cos(54 * PI / 180), r * sin(54 * PI / 180)));
+        shape.rotate(flock_prey->getAgent(i).getAngle() * 180 / PI + 90);
+        shape.setPosition(flock_prey->getAgent(i).getPos().x, flock_prey->getAgent(i).getPos().y);
         shape.setOutlineColor(sf::Color::Black);
         shape.setOutlineThickness(0.5);
         shape.setFillColor(sf::Color::Red);

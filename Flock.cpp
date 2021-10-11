@@ -5,7 +5,7 @@ void Flock::addAgent(const Agent &a)
     flock.push_back(std::move(a));
 }
 
-void Flock::flocking(mt19937_64 &mt)
+void Flock::flocking()
 {
     for (int i = 0; i < flock.size(); i++)
     {

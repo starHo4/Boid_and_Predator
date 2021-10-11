@@ -16,7 +16,7 @@ public:
     void addAgent(const Agent &a);
 
     // Main fucntion
-    void flocking(mt19937_64 &mt);
+    void flocking();
 };
 
 #endif

@@ -16,12 +16,14 @@ private:
     // Global random generator
     mt19937_64 mt;
 
-    Flock *flock;
+    Flock *flock_prey;
+    Flock *flock_predator;
 
     // SFML
     void Render();
     void HandleInput();
-    void DrawFlock();
+    void DrawPreyFlock();
+    void DrawPredatorFlock();
     // Main process
     void MainProcess();
 

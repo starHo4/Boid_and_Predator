@@ -1,4 +1,4 @@
-OBJS = main.o Agent.o Flock.o PVector.o Simulation.o
+OBJS = main.o Agent.o Flock.o Prey.o PVector.o Simulation.o
 CC = g++
 STD = -std=c++17
 SFML = -lsfml-graphics -lsfml-window -lsfml-system
@@ -13,6 +13,8 @@ Flock.o : Flock.cpp
 	$(CC) $(STD) -c Flock.cpp
 main.o : main.cpp
 	$(CC) $(STD) -c main.cpp
+Prey.o : Prey.cpp
+	$(CC) $(STD) -c Prey.cpp
 PVector.o : PVector.cpp
 	$(CC) $(STD) -c PVector.cpp
 Simulation.o : Simulation.cpp
