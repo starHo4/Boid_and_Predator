@@ -55,7 +55,7 @@ int main()
     vector<Clock> clocks;
     clocks.clear();
     clocks.push_back(HoshiClock());
-    clocks[0].Move();
+    clocks[0].(HoshiClock)Move();
     cout << clocks[0].hour << ":" << clocks[0].minute << ":" << clocks[0].second << endl;
 
     return 0;

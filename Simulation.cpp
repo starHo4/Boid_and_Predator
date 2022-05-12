@@ -11,14 +11,14 @@ Simulation::Simulation()
     // Init a prey flock
     for (int i = 0; i < param->N_prey; i++)
     {
-        Prey a;
+        Prey *a = new Prey();
         a.init(mt, *param);
         flock_prey->addAgent(a);
     }
     // Init a predator flock
     for (int i = 0; i < param->N_pred; i++)
     {
-        Agent a;
+        Agent *a = new Agent();
         a.init(mt, *param);
         flock_predator->addAgent(a);
     }
